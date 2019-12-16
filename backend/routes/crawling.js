@@ -6,6 +6,9 @@ var naver = ""
 var daum = ""
 var nate = ""
 var zum = ""
+var data = {
+  naver : []
+}
 const getNaver = async () => {
   try {
     return await axios.get("https://www.naver.com/");
@@ -39,6 +42,8 @@ getNaver()
   })
   .then(res => {
       naver = res
+      data.naver = naver;
+      log(JSON.stringify(data, null, 2))
     });
 
 
@@ -113,7 +118,6 @@ getNate()
   })
   .then(res => {
       nate = res
-      log(nate)
     });
 
 
@@ -150,4 +154,7 @@ getZum()
   })
   .then(res => {
       zum = res
+      // data.push(zum)
     });
+
+    
