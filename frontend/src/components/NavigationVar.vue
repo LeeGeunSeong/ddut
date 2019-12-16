@@ -1,8 +1,12 @@
 <template>
   <div id="maindiv">
     <b-navbar variant="light">
-      <b-navbar-brand class="mr-auto">imgs</b-navbar-brand>
-      <b-navbar-brand class="ml-auto mr-auto">떳?</b-navbar-brand>
+      <b-navbar-brand class="mr-auto" @click="goCarousel()">
+        imgs
+      </b-navbar-brand>
+      <b-navbar-brand class="ml-auto mr-auto" @click="goCarousel()">
+        <span>떳??</span>
+      </b-navbar-brand>
       <b-navbar-nav class="ml-auto">
         <span>
           <img
@@ -33,16 +37,22 @@ export default {
         title: "BootstrapVue Toast",
         appendToast: append
       });
+    },
+    goCarousel() {
+      if (this.$store.state.page != "/") this.$router.push("/");
     }
   }
 };
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css?family=Do+Hyeon|Gugi&display=swap");
 #maindiv {
   height: 5.5vh;
+  font-family: "Gugi", cursive;
 }
 span {
+  font-size: 19px;
   padding-left: 5px;
 }
 </style>

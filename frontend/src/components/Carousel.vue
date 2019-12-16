@@ -12,34 +12,37 @@
       @sliding-end="onSlideEnd"
     >
       <div id="slidediv">
-        <!-- Slides with img slot -->
-        <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
-        <b-carousel-slide
-          caption="네이버 검색어 순위"
-          text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-        >
-          <template v-slot:img>
-            <img
-              class="d-block w-100"
-              width="100vh"
-              src="https://picsum.photos/1024/480/?image=55"
-              alt="image slot"
-            />
-          </template>
-        </b-carousel-slide>
-        <b-carousel-slide
-          caption="다음 검색어 순위"
-          text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-        >
-          <template v-slot:img>
-            <img
-              class="d-block w-100"
-              width="100vh"
-              src="https://picsum.photos/1024/480/?image=55"
-              alt="image slot"
-            />
-          </template>
-        </b-carousel-slide>
+        <a href="/ranktitle/naver">
+          <b-carousel-slide
+            caption="네이버 검색어 순위"
+            text="Nulla vitae elit libero, a pharetra augue mollis interdum."
+          >
+            <template v-slot:img>
+              <img
+                class="d-block w-100"
+                width="100vh"
+                src="@/assets/naver.png"
+                alt="image slot"
+              />
+            </template>
+          </b-carousel-slide>
+        </a>
+
+        <a href="/ranktitle/daum">
+          <b-carousel-slide
+            caption="다음 검색어 순위"
+            text="Nulla vitae elit libero, a pharetra augue mollis interdum."
+          >
+            <template v-slot:img>
+              <img
+                class="d-block w-100"
+                width="100%"
+                src="@/assets/daum.png"
+                alt="image slot"
+              />
+            </template>
+          </b-carousel-slide>
+        </a>
       </div>
     </b-carousel>
   </div>
@@ -47,6 +50,9 @@
 
 <script>
 export default {
+  created() {
+    this.$store.state.page = "/";
+  },
   data() {
     return {
       slide: 0,
@@ -77,5 +83,10 @@ img {
   position: absolute;
   margin: auto;
   opacity: 70%;
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
 }
 </style>
