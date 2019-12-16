@@ -25,7 +25,7 @@
       </tr>
     </table>
 
-    <hr />
+    <br />
     <div>
       <img src="@/assets/ssafyLogo.png" width="50px" />
       <span>SSAFY 삼성청년소프트웨어 아카데미</span>
@@ -40,24 +40,27 @@ export default {
 </script>
 
 <style scoped>
-td {
+@import url("https://fonts.googleapis.com/css?family=Do+Hyeon|Gugi|Nanum+Gothic|Nanum+Myeongjo&display=swap");
+td,
+span {
   padding-left: 10px;
   padding-right: 10px;
+  font-family: "Nanum Gothic", sans-serif;
 }
 #maindiv {
   height: 18vh;
   margin: auto;
   background-color: rgb(44, 44, 44);
   color: white;
-  padding-top: 15px;
-  padding-bottom: 1%;
+  padding-top: 12px;
+  padding-bottom: 5px;
 }
 hr {
-  width: 80%;
+  width: 70%;
   height: 1px;
   background-color: rgb(139, 139, 139);
 }
 div {
-  font-size: 3%;
+  font-size: 14px;
 }
 </style>
