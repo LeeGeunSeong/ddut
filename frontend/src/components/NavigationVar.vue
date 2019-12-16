@@ -24,7 +24,7 @@ export default {
   created() {},
   data() {
     return {
-      toastCount: 0
+      toastCount: 1
     };
   },
   methods: {
