@@ -62,7 +62,7 @@ setInterval(() => {
       .then(res => {
         ref.set(res).then(()=>{console.log('save success')});
        });
-}, 60000);
+}, 600000);
 /*
 router.get('/boardDelete', function(req,res,next){
     firebase.database().ref('board/' + req.query.brdno).remove();
