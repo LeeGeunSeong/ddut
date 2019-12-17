@@ -12,7 +12,6 @@ const store = new Vuex.Store({
   },
   actions: {
     [Constant.GET_RANKTITLE]: (store, payload) => {
-      console.log(payload);
       http
         .get("/ranking/" + payload)
         .then(response => {
@@ -21,11 +20,10 @@ const store = new Vuex.Store({
           for (var index in response.data) {
             tempRanks.push({
               title: response.data[index].title,
-              rank: 30 - response.data[index].rank,
+              rank: 60 - response.data[index].rank * 2,
               url: response.data[index].url
             });
           }
-          console.log(tempRanks);
           store.commit(Constant.GET_RANKTITLE, {
             ranks: tempRanks
           });

@@ -1,74 +1,76 @@
 <template>
   <div id="maindiv">
     <h2 id="name" align="center">{{ sitename }} 인기 검색어</h2>
-    <b-container class="bv-example-row" id="RankTitle">
-      <b-row style="height:100%">
-        <template v-if="rankCount <= 10">
-          <b-col cols="7">
-            <wordcloud
-              :data="ranks"
-              nameKey="title"
-              valueKey="rank"
-              :showTooltip="false"
-              :wordClick="wordClickHandler"
-            />
-          </b-col>
-          <b-col cols="3">
-            <b-list-group>
-              <b-list-group-item
-                v-for="(item, index) in ranks"
-                v-bind:key="item.title"
-                class="d-flex justify-content-between align-items-center"
-                @click="goHref(item.href)"
-                href="#"
-              >
-                <b-badge variant="primary" pill>{{ index + 1 }}</b-badge>
-                {{ item.title }}
-              </b-list-group-item>
-            </b-list-group>
-          </b-col>
-        </template>
-        <template v-else>
-          <b-col cols="6">
-            <wordcloud
-              :data="ranks"
-              nameKey="title"
-              valueKey="rank"
-              :showTooltip="false"
-              :wordClick="wordClickHandler"
-            />
-          </b-col>
-          <b-col cols="2">
-            <b-list-group>
-              <b-list-group-item
-                v-for="index in 10"
-                v-bind:key="ranks[index - 1].title"
-                class="d-flex justify-content-between align-items-center"
-                @click="goHref(ranks[index - 1].url)"
-                href="#"
-              >
-                <b-badge variant="primary" pill>{{ index }}</b-badge>
-                {{ ranks[index - 1].title }}
-              </b-list-group-item>
-            </b-list-group>
-          </b-col>
-          <b-col cols="2">
-            <b-list-group>
-              <b-list-group-item
-                v-for="index in rankCount - 10"
-                v-bind:key="ranks[index].title"
-                class="d-flex justify-content-between align-items-center"
-                @click="goHref(ranks[index - 1].url)"
-                href="#"
-              >
-                <b-badge variant="primary" pill>{{ index + 10 }}</b-badge>
-                {{ ranks[index + 9].title }}
-              </b-list-group-item>
-            </b-list-group>
-          </b-col>
-        </template>
-      </b-row>
-    </b-container>
+    <div id="RankTitle">
+      <!-- <template v-if="rankCount <= 10">
+        <span style="display:inline-block; width:60%;" class="content">
+          <wordcloud
+            :data="ranks"
+            nameKey="title"
+            valueKey="rank"
+            :showTooltip="false"
+            :wordClick="wordClickHandler"
+            margin-top="0"
+            margin-bottom="0"
+            margin-left="0"
+            margin-right="0"
+            :fontSize="fontsize"
+          />
+        </span>
+        <span style="display:inline-block; width:40%;" class="content">
+          <table>
+            <tr v-for="row in 10" v-bind:key="row - 1">
+              <td @click="goHref(ranks[row - 1].url)" href="#" width="50%">
+                <div class="box1">
+                  <b-badge variant="primary" pill>
+                    {{ row }}
+                  </b-badge>
+                  {{ ranks[row - 1].title }}
+                </div>
+              </td>
+            </tr>
+          </table>
+        </span>
+      </template>
+      <template v-else> -->
+      <span style="display:inline-block; width:60%;" class="content">
+        <wordcloud
+          :data="ranks"
+          nameKey="title"
+          valueKey="rank"
+          :showTooltip="false"
+          :wordClick="wordClickHandler"
+          margin-top="0"
+          margin-bottom="0"
+          margin-left="0"
+          margin-right="0"
+          :fontSize="fontsize"
+        />
+      </span>
+      <span style="display:inline-block; width:40%;" class="content">
+        <table>
+          <tr v-for="row in 10" v-bind:key="row - 1">
+            <td @click="goHref(ranks[row - 1].url)" href="#" width="50%">
+              <div class="box1">
+                <b-badge variant="primary" pill>
+                  {{ row }}
+                </b-badge>
+                {{ ranks[row - 1].title }}
+              </div>
+            </td>
+            <td @click="goHref(ranks[row + 9].url)" href="#">
+              <div class="box1">
+                <b-badge variant="primary" pill>
+                  {{ row + 10 }}
+                </b-badge>
+                {{ ranks[row + 9].title }}
+              </div>
+            </td>
+          </tr>
+        </table>
+      </span>
+      <!-- </template> -->
+    </div>
   </div>
 </template>
 
@@ -82,8 +84,10 @@ export default {
     wordcloud
   },
   methods: {
-    wordClickHandler(name, value) {
-      console.log("wordClickHandler", name, value);
+    wordClickHandler(name) {
+      this.ranks.forEach(function(item) {
+        if (item.text == name) location.href = item.url;
+      });
     },
     goHref(href) {
       location.href = href;
@@ -104,7 +108,8 @@ export default {
   data() {
     return {
       sitename: this.$route.params.sitename,
-      myColors: ["#1f77b4", "#629fc9", "#94bedb", "#c9e0ef"]
+      myColors: ["#1f77b4", "#629fc9", "#94bedb", "#c9e0ef"],
+      fontsize: [10, 50]
     };
   }
 };
@@ -121,6 +126,9 @@ export default {
 #RankTitle {
   vertical-align: middle;
   padding-top: 30px;
+  padding-right: 50px;
+  padding-left: 50px;
+  height: 70%;
 }
 #maindiv {
   height: 76.5vh;
@@ -134,5 +142,18 @@ export default {
   padding: 0.4rem 1.25rem;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.125);
+}
+td {
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+.content {
+  padding: 0px 5px;
+}
+.box1 {
+  float: left;
+}
+.box2 {
+  float: right;
 }
 </style>

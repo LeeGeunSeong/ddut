@@ -13,10 +13,7 @@
     >
       <div id="slidediv">
         <a href="/ranktitle/naver">
-          <b-carousel-slide
-            caption="네이버 검색어 순위"
-            text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-          >
+          <b-carousel-slide caption="네이버 검색어 순위">
             <template v-slot:img>
               <img
                 class="d-block w-100"
@@ -29,10 +26,33 @@
         </a>
 
         <a href="/ranktitle/daum">
-          <b-carousel-slide
-            caption="다음 검색어 순위"
-            text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-          >
+          <b-carousel-slide caption="다음 검색어 순위">
+            <template v-slot:img>
+              <img
+                class="d-block w-100"
+                width="100%"
+                src="@/assets/daum.png"
+                alt="image slot"
+              />
+            </template>
+          </b-carousel-slide>
+        </a>
+
+        <a href="/ranktitle/nate">
+          <b-carousel-slide caption="네이트 검색어 순위">
+            <template v-slot:img>
+              <img
+                class="d-block w-100"
+                width="100%"
+                src="@/assets/daum.png"
+                alt="image slot"
+              />
+            </template>
+          </b-carousel-slide>
+        </a>
+
+        <a href="/ranktitle/zum">
+          <b-carousel-slide caption="줌 검색어 순위">
             <template v-slot:img>
               <img
                 class="d-block w-100"
