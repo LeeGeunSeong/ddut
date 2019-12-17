@@ -25,7 +25,7 @@ const store = new Vuex.Store({
           alert("랭킹을 불러오는데 실패하였습니다." + exp);
           store.commit(Constant.GET_RANKTITLE, {
             ranks: [
-              { name: "랭킹을", value: "100" },
+              { name: "랭킹을", value: "100", href: "http://www.naver.com" },
               { name: "불러", value: "80" },
               { name: "오는데", value: "76" },
               { name: "실패", value: "58" },

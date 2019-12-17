@@ -18,6 +18,8 @@
               v-for="(item, index) in ranks"
               v-bind:key="item.name"
               class="d-flex justify-content-between align-items-center"
+              @click="goHref(item.href)"
+              href="#"
             >
               <b-badge variant="primary" pill>{{ index + 1 }}</b-badge>
               {{ item.name }}
@@ -41,6 +43,9 @@ export default {
   methods: {
     wordClickHandler(name, value) {
       console.log("wordClickHandler", name, value);
+    },
+    goHref(href) {
+      location.href = href;
     }
   },
   created() {
