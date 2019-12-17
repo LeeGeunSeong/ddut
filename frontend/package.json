@@ -38,7 +38,13 @@
       "eslint:recommended"
     ],
     "rules": {
-      "no-console": "off"
+      "no-console": "off",
+      "vue/no-use-v-if-with-v-for": [
+        "error",
+        {
+          "allowUsingIterationVar": true
+        }
+      ]
     },
     "parserOptions": {
       "parser": "babel-eslint"
