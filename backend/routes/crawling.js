@@ -76,42 +76,40 @@ getNaver()
       .then(res => {
         data.daum = res;
 
+        const NateUrl = "http://search.daum.net/nate";
         const getNate = async () => {
           try {
-            return await axios.get("https://www.nate.com/");
+            return await axios.get(NateUrl);
           } catch (error) {
             console.error(error);
           }
         };
 
         getNate()
-          .then(html => {
+        .then(html => {
             let ulList = [];
             const $ = cheerio.load(html.data);
             const $bodyList = $(
-              "div.area_rtkwd.type_alone"
-            ).children("div.kwd_list").children("ol").children("li");
+              "div.coll_cont"
+            ).children("div.wrap_rank").children("ol").children("li");
             $bodyList.each(function(i, elem) {  
               ulList[i] = {
                 rank: $(this)
-                  .find("p").children("span.nHide")
-                  .text()
-                  .replace("위", ""),
+                  .find("div").children("div:first-child").children("span.num_rank")
+                  .text(),
                 title: $(this)
-                  .find("p a")
-                  .attr("title"),
-                url: $(this)
-                  .find("p a")
+                  .find("div").children("div:first-child").children("span.keyword_rank").children("a")
+                  .text(),
+                url: NateUrl + $(this)
+                  .find("div").children("div:first-child").children("span.keyword_rank").children("a")
                   .attr("href")
                 };
-                log(ulList[i])
             });
             const data = ulList.filter(n => n.title);
             return data;
           })
           .then(res => {
             data.nate = res;
-            log(JSON.stringify(res, null, 2))
 
             const getZum = async () => {
               try {
@@ -148,7 +146,8 @@ getNaver()
               })
               .then(res => {
                 data.zum = res;
-                
+
+                log(JSON.stringify(data, null, 2))
               });
           });
       });

@@ -65,7 +65,7 @@ router.get('/boardForm', function(req,res,next){
         res.render('board1/boardForm', {row: childData});
     });
 });
- 
+*/
 router.post('/boardSave', function(req,res,next){
     var postData = req.body;
     if (!postData.brdno) {
@@ -81,7 +81,7 @@ router.post('/boardSave', function(req,res,next){
      
     res.redirect('boardList');
 });
- 
+/*
 router.get('/boardDelete', function(req,res,next){
     firebase.database().ref('board/' + req.query.brdno).remove();
     res.redirect('boardList');
