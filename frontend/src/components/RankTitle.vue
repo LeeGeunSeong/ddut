@@ -2,7 +2,7 @@
   <div id="maindiv">
     <h2 id="name" align="center">{{ sitename }} 인기 검색어</h2>
     <div id="RankTitle">
-      <!-- <template v-if="rankCount <= 10">
+      <template v-if="rankCount <= 10">
         <span style="display:inline-block; width:60%;" class="content">
           <wordcloud
             :data="ranks"
@@ -25,51 +25,57 @@
                   <b-badge variant="primary" pill>
                     {{ row }}
                   </b-badge>
-                  {{ ranks[row - 1].title }}
+                  <span v-if="ranks[row - 1]">
+                    {{ ranks[row - 1].title }}
+                  </span>
                 </div>
               </td>
             </tr>
           </table>
         </span>
       </template>
-      <template v-else> -->
-      <span style="display:inline-block; width:60%;" class="content">
-        <wordcloud
-          :data="ranks"
-          nameKey="title"
-          valueKey="rank"
-          :showTooltip="false"
-          :wordClick="wordClickHandler"
-          margin-top="0"
-          margin-bottom="0"
-          margin-left="0"
-          margin-right="0"
-          :fontSize="fontsize"
-        />
-      </span>
-      <span style="display:inline-block; width:40%;" class="content">
-        <table>
-          <tr v-for="row in 10" v-bind:key="row - 1">
-            <td @click="goHref(ranks[row - 1].url)" href="#" width="50%">
-              <div class="box1">
-                <b-badge variant="primary" pill>
-                  {{ row }}
-                </b-badge>
-                {{ ranks[row - 1].title }}
-              </div>
-            </td>
-            <td @click="goHref(ranks[row + 9].url)" href="#">
-              <div class="box1">
-                <b-badge variant="primary" pill>
-                  {{ row + 10 }}
-                </b-badge>
-                {{ ranks[row + 9].title }}
-              </div>
-            </td>
-          </tr>
-        </table>
-      </span>
-      <!-- </template> -->
+      <template v-else>
+        <span style="display:inline-block; width:60%;" class="content">
+          <wordcloud
+            :data="ranks"
+            nameKey="title"
+            valueKey="rank"
+            :showTooltip="false"
+            :wordClick="wordClickHandler"
+            margin-top="0"
+            margin-bottom="0"
+            margin-left="0"
+            margin-right="0"
+            :fontSize="fontsize"
+          />
+        </span>
+        <span style="display:inline-block; width:40%;" class="content">
+          <table>
+            <tr v-for="row in 10" v-bind:key="row - 1">
+              <td @click="goHref(ranks[row - 1].url)" href="#" width="50%">
+                <div class="box1">
+                  <b-badge variant="primary" pill>
+                    {{ row }}
+                  </b-badge>
+                  <span v-if="ranks[row - 1]">
+                    {{ ranks[row - 1].title }}
+                  </span>
+                </div>
+              </td>
+              <td @click="goHref(ranks[row + 9].url)" href="#">
+                <div class="box1">
+                  <b-badge variant="primary" pill>
+                    {{ row + 10 }}
+                  </b-badge>
+                  <span v-if="ranks[row + 9]">
+                    {{ ranks[row + 9].title }}
+                  </span>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </span>
+      </template>
     </div>
   </div>
 </template>
