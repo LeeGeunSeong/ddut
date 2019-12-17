@@ -12,29 +12,39 @@ const store = new Vuex.Store({
   },
   actions: {
     [Constant.GET_RANKTITLE]: (store, payload) => {
-      console.log(payload);
       http
         .get("/ranking/" + payload)
         .then(response => {
           console.log(response);
+          var tempRanks = [];
+          for (var index in response.data) {
+            var temp = 80 - response.data[index].rank * 3;
+            if (index == 0) temp = 85;
+            tempRanks.push({
+              title: response.data[index].title,
+              rank: temp,
+              url: response.data[index].url
+            });
+          }
           store.commit(Constant.GET_RANKTITLE, {
-            ranks: response.data
+            ranks: tempRanks
           });
         })
         .catch(exp => {
           alert("랭킹을 불러오는데 실패하였습니다." + exp);
           store.commit(Constant.GET_RANKTITLE, {
             ranks: [
-              { name: "랭킹을", value: "100" },
-              { name: "불러", value: "80" },
-              { name: "오는데", value: "76" },
-              { name: "실패", value: "58" },
-              { name: "하였", value: "54" },
-              { name: "습니당", value: "35" },
-              { name: "시무룩", value: "33" },
-              { name: "더 시무룩", value: "26" },
-              { name: "9등", value: "21" },
-              { name: "10등", value: "15" }
+              { title: "랭킹을", rank: "31", url: "http://www.naver.com" },
+              { title: "불러", rank: "30", url: "http:///edu.ssafy.com" },
+              { title: "오는데", rank: "29" },
+              { title: "실패", rank: "28" },
+              { title: "하였", rank: "27" },
+              { title: "습니당", rank: "26" },
+              { title: "시무룩", rank: "25" },
+              { title: "더 시무룩", rank: "24" },
+              { title: "9등", rank: "23" },
+              { title: "10등", rank: "22" },
+              { title: "11등", rank: "21" }
             ]
           });
         });

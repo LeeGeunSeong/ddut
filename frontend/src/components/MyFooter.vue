@@ -14,13 +14,13 @@
       <tr>
         <td>다음 검색어 순위</td>
         <td>네이트 검색어 순위</td>
-        <td>근성메일@gmail.com</td>
+        <td>skscp223@gmail.com</td>
         <td>sm0514sm@gmail.com</td>
       </tr>
       <tr>
         <td>줌 검색어 순위</td>
         <td>통합 검색어 순위</td>
-        <td>010-0000-9902</td>
+        <td>010-2217-9902</td>
         <td>010-2501-2866</td>
       </tr>
     </table>
