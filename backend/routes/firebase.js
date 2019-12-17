@@ -1,14 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var app = express();
 var db = require('./db')
 var ref = db;
 
-app.all('/*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    next();
-  });
 router.get('/naver', function(req, res, next) {
     ref.child('naver').orderByKey().once('value', function(data) {
         var rows = [];
@@ -16,6 +10,7 @@ router.get('/naver', function(req, res, next) {
             rows.push(childData.val());
         });
         res.send(rows)
+        console.log(rows)
         // res.render('board1/boardList', {rows: rows});
     });
 });
