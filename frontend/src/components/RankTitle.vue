@@ -3,29 +3,70 @@
     <h2 id="name" align="center">{{ sitename }} 인기 검색어</h2>
     <b-container class="bv-example-row" id="RankTitle">
       <b-row style="height:100%">
-        <b-col cols="7">
-          <wordcloud
-            :data="ranks"
-            nameKey="name"
-            valueKey="value"
-            :showTooltip="false"
-            :wordClick="wordClickHandler"
-          />
-        </b-col>
-        <b-col cols="3">
-          <b-list-group>
-            <b-list-group-item
-              v-for="(item, index) in ranks"
-              v-bind:key="item.name"
-              class="d-flex justify-content-between align-items-center"
-              @click="goHref(item.href)"
-              href="#"
-            >
-              <b-badge variant="primary" pill>{{ index + 1 }}</b-badge>
-              {{ item.name }}
-            </b-list-group-item>
-          </b-list-group>
-        </b-col>
+        <template v-if="rankCount <= 10">
+          <b-col cols="7">
+            <wordcloud
+              :data="ranks"
+              nameKey="title"
+              valueKey="rank"
+              :showTooltip="false"
+              :wordClick="wordClickHandler"
+            />
+          </b-col>
+          <b-col cols="3">
+            <b-list-group>
+              <b-list-group-item
+                v-for="(item, index) in ranks"
+                v-bind:key="item.title"
+                class="d-flex justify-content-between align-items-center"
+                @click="goHref(item.href)"
+                href="#"
+              >
+                <b-badge variant="primary" pill>{{ index + 1 }}</b-badge>
+                {{ item.title }}
+              </b-list-group-item>
+            </b-list-group>
+          </b-col>
+        </template>
+        <template v-else>
+          <b-col cols="6">
+            <wordcloud
+              :data="ranks"
+              nameKey="title"
+              valueKey="rank"
+              :showTooltip="false"
+              :wordClick="wordClickHandler"
+            />
+          </b-col>
+          <b-col cols="2">
+            <b-list-group>
+              <b-list-group-item
+                v-for="index in 10"
+                v-bind:key="ranks[index - 1].title"
+                class="d-flex justify-content-between align-items-center"
+                @click="goHref(ranks[index - 1].url)"
+                href="#"
+              >
+                <b-badge variant="primary" pill>{{ index }}</b-badge>
+                {{ ranks[index - 1].title }}
+              </b-list-group-item>
+            </b-list-group>
+          </b-col>
+          <b-col cols="2">
+            <b-list-group>
+              <b-list-group-item
+                v-for="index in rankCount - 10"
+                v-bind:key="ranks[index].title"
+                class="d-flex justify-content-between align-items-center"
+                @click="goHref(ranks[index - 1].url)"
+                href="#"
+              >
+                <b-badge variant="primary" pill>{{ index + 10 }}</b-badge>
+                {{ ranks[index + 9].title }}
+              </b-list-group-item>
+            </b-list-group>
+          </b-col>
+        </template>
       </b-row>
     </b-container>
   </div>
@@ -55,6 +96,9 @@ export default {
   computed: {
     ranks() {
       return this.$store.state.ranks;
+    },
+    rankCount() {
+      return this.ranks.length;
     }
   },
   data() {
