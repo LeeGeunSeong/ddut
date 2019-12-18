@@ -18,7 +18,7 @@
               <img
                 class="d-block w-100"
                 width="100vh"
-                src="@/assets/naver.png"
+                src="@/assets/naver_site.png"
                 alt="image slot"
               />
             </template>
@@ -28,12 +28,7 @@
         <a href="/ranktitle/daum">
           <b-carousel-slide caption="다음 검색어 순위">
             <template v-slot:img>
-              <img
-                class="d-block w-100"
-                width="100%"
-                src="@/assets/daum.png"
-                alt="image slot"
-              />
+              <img class="d-block w-100" width="100%" src="@/assets/daum_site.png" alt="image slot" />
             </template>
           </b-carousel-slide>
         </a>
@@ -41,12 +36,7 @@
         <a href="/ranktitle/nate">
           <b-carousel-slide caption="네이트 검색어 순위">
             <template v-slot:img>
-              <img
-                class="d-block w-100"
-                width="100%"
-                src="@/assets/daum.png"
-                alt="image slot"
-              />
+              <img class="d-block w-100" width="100%" src="@/assets/daum_site.png" alt="image slot" />
             </template>
           </b-carousel-slide>
         </a>
@@ -54,12 +44,7 @@
         <a href="/ranktitle/zum">
           <b-carousel-slide caption="줌 검색어 순위">
             <template v-slot:img>
-              <img
-                class="d-block w-100"
-                width="100%"
-                src="@/assets/daum.png"
-                alt="image slot"
-              />
+              <img class="d-block w-100" width="100%" src="@/assets/daum_site.png" alt="image slot" />
             </template>
           </b-carousel-slide>
         </a>

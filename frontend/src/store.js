@@ -18,9 +18,11 @@ const store = new Vuex.Store({
           console.log(response);
           var tempRanks = [];
           for (var index in response.data) {
+            var temp = 80 - response.data[index].rank * 3;
+            if (index == 0) temp = 85;
             tempRanks.push({
               title: response.data[index].title,
-              rank: 60 - response.data[index].rank * 2,
+              rank: temp,
               url: response.data[index].url
             });
           }

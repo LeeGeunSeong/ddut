@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="scroll-off">
     <Navi></Navi>
     <router-view></router-view>
     <MyFooter></MyFooter>
@@ -41,5 +41,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.scroll-off {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  max-height: 100vh;
+  overflow: hidden;
+  padding-bottom: 1px;
+}
+div.tooltip {
+  display: none;
 }
 </style>
