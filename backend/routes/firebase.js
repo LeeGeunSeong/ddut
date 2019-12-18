@@ -55,7 +55,6 @@ router.get("/zum", cors(), function(req, res, next) {
 });
 
 setInterval(() => {
-<<<<<<< HEAD
     var crawlData = crawl()
       .then(function(data) {
         return data;
@@ -64,18 +63,6 @@ setInterval(() => {
         ref.set(res).then(()=>{console.log('save success')});
        });
 }, 600000);
-=======
-  var crawlData = crawl()
-    .then(function(data) {
-      return data;
-    })
-    .then(res => {
-      ref.set(res).then(() => {
-        console.log("save success");
-      });
-    });
-}, 60000);
->>>>>>> 3e0cfd82d140bcab758f1748e3288233c3c12c5c
 /*
 router.get('/boardDelete', function(req,res,next){
     firebase.database().ref('board/' + req.query.brdno).remove();
