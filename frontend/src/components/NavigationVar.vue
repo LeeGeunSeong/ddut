@@ -4,6 +4,7 @@
       <b-navbar-nav class="mr-auto">
         <Slide>
           <a id="home" href="/">
+            <img src="@/assets/home_icon.png" width="30px" height="30px" />
             <span>Home</span>
           </a>
           <a href="/ranktitle/naver">
@@ -23,6 +24,7 @@
             <span>검색어 순위</span>
           </a>
           <a href="/ranktotal">
+            <img src="@/assets/total_icon.png" width="30px" height="30px" />
             <span>전체 인기 검색어</span>
           </a>
         </Slide>

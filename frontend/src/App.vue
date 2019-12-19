@@ -37,6 +37,7 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css?family=Do+Hyeon|Gugi&display=swap");
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -64,5 +65,9 @@ div.tooltip {
   position: absolute;
   top: 18px;
   width: 25px;
+}
+.bm-item-list > * > span {
+  font-family: "Do Hyeon", cursive;
+  font-weight: 500;
 }
 </style>
