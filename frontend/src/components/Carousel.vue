@@ -36,7 +36,7 @@
         <a href="/ranktitle/nate">
           <b-carousel-slide caption="네이트 검색어 순위">
             <template v-slot:img>
-              <img class="d-block w-100" width="100%" src="@/assets/daum_site.png" alt="image slot" />
+              <img class="d-block w-100" width="100%" src="@/assets/nate_site.png" alt="image slot" />
             </template>
           </b-carousel-slide>
         </a>
@@ -44,7 +44,20 @@
         <a href="/ranktitle/zum">
           <b-carousel-slide caption="줌 검색어 순위">
             <template v-slot:img>
-              <img class="d-block w-100" width="100%" src="@/assets/daum_site.png" alt="image slot" />
+              <img class="d-block w-100" width="100%" src="@/assets/zum_site.png" alt="image slot" />
+            </template>
+          </b-carousel-slide>
+        </a>
+
+        <a href="/ranktotal">
+          <b-carousel-slide caption="전체 인기 검색어">
+            <template v-slot:img>
+              <img
+                class="d-block w-100"
+                width="100%"
+                src="@/assets/total_site.png"
+                alt="image slot"
+              />
             </template>
           </b-carousel-slide>
         </a>

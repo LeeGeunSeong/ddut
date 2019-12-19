@@ -53,7 +53,7 @@
         <a href="/ranktitle/zum">
           <td>줌 검색어 순위</td>
         </a>
-        <a href="/ranktitle/nate">
+        <a href="/ranktotal">
           <td>통합 검색어 순위</td>
         </a>
         <td>010-2217-9902</td>

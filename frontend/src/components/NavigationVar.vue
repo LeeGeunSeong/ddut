@@ -2,72 +2,45 @@
   <div id="maindiv">
     <b-navbar variant="light">
       <b-navbar-nav class="mr-auto">
-        <span>
-          <img src="@/assets/menu.png" alt="menu" width="40px" @click="$bvToast.show('my-toast')" />
-        </span>
+        <Slide>
+          <a id="home" href="/">
+            <span>Home</span>
+          </a>
+          <a href="/ranktitle/naver">
+            <img src="@/assets/naver_icon.png" width="30px" height="30px" />
+            <span>검색어 순위</span>
+          </a>
+          <a href="/ranktitle/daum">
+            <img src="@/assets/daum_icon.png" width="30px" height="30px" />
+            <span>검색어 순위</span>
+          </a>
+          <a href="/ranktitle/nate">
+            <img src="@/assets/nate_icon.png" width="30px" height="30px" />
+            <span>검색어 순위</span>
+          </a>
+          <a href="/ranktitle/zum">
+            <img src="@/assets/zum_icon.png" width="30px" height="30px" />
+            <span>검색어 순위</span>
+          </a>
+          <a href="/ranktotal">
+            <span>전체 인기 검색어</span>
+          </a>
+        </Slide>
       </b-navbar-nav>
       <b-navbar-brand class="mr-auto" @click="goCarousel()">
         <span>떳??</span>
       </b-navbar-brand>
     </b-navbar>
-    <b-toast toaster="b-toaster-top-left" id="my-toast" solid auto-hide-delay="10000">
-      <template v-slot:toast-title>
-        <div class="d-flex flex-grow-1 align-items-baseline">
-          <b-img blank blank-color="#ff5555" class="mr-2" width="12" height="12"></b-img>
-          <strong class="mr-auto">
-            <b>전체 기능</b>
-          </strong>
-          <small class="text-muted mr-2">We Are SSAFY!</small>
-        </div>
-      </template>
-      <table align="center">
-        <tr>
-          <td colspan="3">
-            <h5>
-              <b>전체 기능</b>
-            </h5>
-          </td>
-        </tr>
-        <tr>
-          <a @click="goCarousel()">
-            <td width="50%">메인 화면 보기</td>
-          </a>
-          <a href="/ranktitle/naver">
-            <td width="50%">
-              <img src="@/assets/naver_icon.png" width="20px" /> 검색어 순위
-            </td>
-          </a>
-        </tr>
-        <tr>
-          <a href="/ranktitle/daum">
-            <td>
-              <img src="@/assets/daum_icon.png" width="20px" /> 검색어 순위
-            </td>
-          </a>
-          <a href="/ranktitle/nate">
-            <td>
-              <img src="@/assets/nate_icon.png" width="20px" /> 검색어 순위
-            </td>
-          </a>
-        </tr>
-        <tr>
-          <a href="/ranktitle/zum">
-            <td>
-              <img src="@/assets/zum_icon.png" width="20px" /> 검색어 순위
-            </td>
-          </a>
-          <a href="/ranktitle/nate">
-            <td>통합 검색어 순위</td>
-          </a>
-        </tr>
-      </table>
-    </b-toast>
   </div>
 </template>
 
 <script>
+import { Slide } from "vue-burger-menu";
 export default {
   name: "navigationVar",
+  components: {
+    Slide // Register your component
+  },
   created() {},
   data() {
     return {

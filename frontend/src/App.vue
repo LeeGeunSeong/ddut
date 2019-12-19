@@ -10,6 +10,7 @@
 import Navi from "./components/NavigationVar.vue";
 import Carousel from "./components/Carousel.vue";
 import RankTitle from "./components/RankTitle.vue";
+import RankTotal from "./components/RankTotal.vue";
 import MyFooter from "./components/MyFooter.vue";
 import VueRouter from "vue-router";
 import Vue from "vue";
@@ -20,7 +21,8 @@ const router = new VueRouter({
   routes: [
     { path: "", component: Carousel },
     { path: "/", component: Carousel },
-    { path: "/ranktitle/:sitename", component: RankTitle }
+    { path: "/ranktitle/:sitename", component: RankTitle },
+    { path: "/ranktotal", component: RankTotal }
   ]
 });
 
@@ -54,5 +56,13 @@ export default {
 }
 div.tooltip {
   display: none;
+}
+.bm-burger-button {
+  cursor: pointer;
+  height: 20px;
+  left: 18px;
+  position: absolute;
+  top: 18px;
+  width: 25px;
 }
 </style>
