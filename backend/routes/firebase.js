@@ -55,16 +55,14 @@ router.get("/zum", cors(), function(req, res, next) {
 });
 
 setInterval(() => {
-  var crawlData = crawl()
-    .then(function(data) {
-      return data;
-    })
-    .then(res => {
-      ref.set(res).then(() => {
-        console.log("save success");
-      });
-    });
-}, 60000);
+    var crawlData = crawl()
+      .then(function(data) {
+        return data;
+      })
+      .then(res => {
+        ref.set(res).then(()=>{console.log('save success')});
+       });
+}, 600000);
 /*
 router.get('/boardDelete', function(req,res,next){
     firebase.database().ref('board/' + req.query.brdno).remove();
